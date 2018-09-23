@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Video < ApplicationRecord
+  include AlgoliaSearch
   extend FriendlyId
   friendly_id :title, use: :slugged
   belongs_to :user, optional: true
@@ -37,5 +38,10 @@ class Video < ApplicationRecord
 
   def live_now
     Yt::Models::Video.new(id: self.youtube_id).live_broadcast_content == 'live'
+  end
+
+  algoliasearch per_environment: true do
+    attributes :title
+    searchableAttributes ['title']
   end
 end

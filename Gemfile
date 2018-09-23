@@ -25,16 +25,17 @@ gem 'puma', '~> 3.11'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'algoliasearch-rails'
+gem 'api-pagination'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cancancan'
 gem 'devise_token_auth'
 gem 'fast_jsonapi'
 gem 'friendly_id', '~> 5.2.0'
+gem 'pagy'
 gem 'rolify'
 gem 'yt'
 gem 'yt-url'
-gem 'api-pagination'
-gem 'pagy'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
@@ -44,8 +45,8 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
-  gem 'rspec-rails', '~> 3.8'
   gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :test do

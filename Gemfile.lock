@@ -52,6 +52,12 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (6.0.0)
       activerecord (~> 5.0)
+    algoliasearch (1.23.2)
+      httpclient (~> 2.8, >= 2.8.3)
+      json (>= 1.5.1)
+    algoliasearch-rails (1.20.4)
+      algoliasearch (>= 1.17.0, < 2.0.0)
+      json (>= 1.5.1)
     api-pagination (4.8.1)
     arel (9.0.0)
     bcrypt (3.1.12)
@@ -86,8 +92,10 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    httpclient (2.8.3)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
+    json (2.1.0)
     json_matchers (0.10.0)
       json_schema
     json_schema (0.19.1)
@@ -210,6 +218,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 6.0)
+  algoliasearch-rails
   api-pagination
   bootsnap (>= 1.1.0)
   byebug

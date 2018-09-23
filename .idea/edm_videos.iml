@@ -35,6 +35,8 @@
     <orderEntry type="library" scope="PROVIDED" name="activestorage (v5.2.1, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v5.2.1, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="acts-as-taggable-on (v6.0.0, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="algoliasearch (v1.23.2, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="algoliasearch-rails (v1.20.4, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="api-pagination (v4.8.1, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v9.0.0, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.12, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
@@ -57,7 +59,9 @@
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.9.25, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="friendly_id (v5.2.4, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.1, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="httpclient (v2.8.3, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.1.0, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="json (v2.1.0, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json_matchers (v0.10.0, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json_schema (v0.19.1, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jwt (v2.1.0, RVM: ruby-2.5.1 [edm_videos]) [gem]" level="application" />
