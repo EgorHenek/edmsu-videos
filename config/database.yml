@@ -50,7 +50,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: edm_videos_production
-  username: edm_videos
-  password: <%= ENV['EDM_VIDEOS_DATABASE_PASSWORD'] %>
+  username: edm
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
