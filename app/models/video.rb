@@ -41,7 +41,7 @@ class Video < ApplicationRecord
   end
 
   algoliasearch per_environment: true do
-    attributes :title
+    attributes :title, :slug, :duration, :avatar
     searchableAttributes ['title']
   end
 end
