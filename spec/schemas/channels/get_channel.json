@@ -1,0 +1,130 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "$id": "#/properties/data",
+      "type": "object",
+      "title": "The Data Schema",
+      "required": [
+        "id",
+        "type",
+        "attributes"
+      ],
+      "properties": {
+        "id": {
+          "$id": "#/properties/data/properties/id",
+          "type": "string",
+          "title": "The Id Schema",
+          "default": "",
+          "examples": [
+            "4"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "type": {
+          "$id": "#/properties/data/properties/type",
+          "type": "string",
+          "title": "The Type Schema",
+          "default": "",
+          "examples": [
+            "channel"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "attributes": {
+          "$id": "#/properties/data/properties/attributes",
+          "type": "object",
+          "title": "The Attributes Schema",
+          "required": [
+            "id",
+            "title",
+            "description",
+            "youtube_id",
+            "youtube_url",
+            "avatar",
+            "created_at"
+          ],
+          "properties": {
+            "id": {
+              "$id": "#/properties/data/properties/attributes/properties/id",
+              "type": "integer",
+              "title": "The Id Schema",
+              "default": 0,
+              "examples": [
+                4
+              ]
+            },
+            "title": {
+              "$id": "#/properties/data/properties/attributes/properties/title",
+              "type": "string",
+              "title": "The Title Schema",
+              "default": "",
+              "examples": [
+                "K.BOOKING AGENCY"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "description": {
+              "$id": "#/properties/data/properties/attributes/properties/description",
+              "type": "string",
+              "title": "The Description Schema",
+              "default": "",
+              "examples": [
+                "For any questions or requests: mixesmusicandmore @ gmail.com\n\nOUT NOW\n\"Romanian Trip\" by Ratigar\n\nBuy / Stream / Download:\nhttps://fanlink.to/XYCrTr\n\nOver a first year into his career, Ratigar is chasing those moments where his strange sound collages fit together like puzzle pieces of the sublime. In new release \"Romanian Trip\" he presents two minimal tracks that float in the same esoteric zone as the earlier music, albeit this time better suited for DJ use. In this release, Ratigar captures a distinctly Romanian brand of melancholy, often heard in minimal house tracks by beloved Minimal artists. It's the kind of snaking modular workout he and many Romanians have spent the past few years refining, flowing underneath gently shuffling drums and the occasional synth tone."
+              ],
+              "pattern": "^(.*)$"
+            },
+            "youtube_id": {
+              "$id": "#/properties/data/properties/attributes/properties/youtube_id",
+              "type": "string",
+              "title": "The Youtube_id Schema",
+              "default": "",
+              "examples": [
+                "UCHGXQfIIc1G23GDyZH25rQQ"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "youtube_url": {
+              "$id": "#/properties/data/properties/attributes/properties/youtube_url",
+              "type": "string",
+              "title": "The Youtube_url Schema",
+              "default": "",
+              "examples": [
+                "https://www.youtube.com/user/KMMNKTN"
+              ],
+              "pattern": "((http|https):\\/\\/|)(www\\.|)youtube\\.com\\/(channel\\/|user\\/)[a-zA-Z0-9\\-]{1,}",
+              "format": "regex"
+            },
+            "avatar": {
+              "$id": "#/properties/data/properties/attributes/properties/avatar",
+              "type": "string",
+              "title": "The Avatar Schema",
+              "default": "",
+              "examples": [
+                "https://yt3.ggpht.com/a-/AN66SAy3BKFMKmJnd5-ioWpvByK68dlhLNt52SDJsw=s88-mo-c-c0xffffffff-rj-k-no"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "created_at": {
+              "$id": "#/properties/data/properties/attributes/properties/created_at",
+              "type": "string",
+              "title": "The Created_at Schema",
+              "default": "",
+              "examples": [
+                "2018-09-20 11:08:06 UTC"
+              ],
+              "pattern": "^(.*)$"
+            }
+          }
+        }
+      }
+    }
+  }
+}

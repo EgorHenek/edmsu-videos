@@ -1,0 +1,5 @@
+Style/RegexpLiteral:
+  AllowInnerSlashes: true
+
+Metrics/LineLength:
+  Max: 120

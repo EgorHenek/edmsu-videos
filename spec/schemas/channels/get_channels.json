@@ -1,0 +1,137 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "$id": "#/properties/data",
+      "type": "array",
+      "title": "The Data Schema",
+      "items": {
+        "$id": "#/properties/data/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "id",
+          "type",
+          "attributes"
+        ],
+        "properties": {
+          "id": {
+            "$id": "#/properties/data/items/properties/id",
+            "type": "string",
+            "title": "The Id Schema",
+            "default": "",
+            "examples": [
+              "3"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "type": {
+            "$id": "#/properties/data/items/properties/type",
+            "type": "string",
+            "enum": [
+              "channel"
+            ],
+            "title": "The Type Schema",
+            "default": "",
+            "examples": [
+              "channel"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "attributes": {
+            "$id": "#/properties/data/items/properties/attributes",
+            "type": "object",
+            "title": "The Attributes Schema",
+            "required": [
+              "id",
+              "title",
+              "description",
+              "youtube_id",
+              "youtube_url",
+              "avatar",
+              "created_at"
+            ],
+            "properties": {
+              "id": {
+                "$id": "#/properties/data/items/properties/attributes/properties/id",
+                "type": "integer",
+                "title": "The Id Schema",
+                "default": 0,
+                "examples": [
+                  3
+                ]
+              },
+              "title": {
+                "$id": "#/properties/data/items/properties/attributes/properties/title",
+                "type": "string",
+                "title": "The Title Schema",
+                "default": "",
+                "examples": [
+                  "Defected Records"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "description": {
+                "$id": "#/properties/data/items/properties/attributes/properties/description",
+                "type": "string",
+                "title": "The Description Schema",
+                "default": "",
+                "examples": [
+                  "Defected is probably the one and only label that carried House music's legacy into the 21st century. It preserved its history while continuing a new one, bridging the gap across generations of music lovers and clubbers worldwide."
+                ],
+                "pattern": "^(.*)$"
+              },
+              "youtube_id": {
+                "$id": "#/properties/data/items/properties/attributes/properties/youtube_id",
+                "type": "string",
+                "title": "The Youtube_id Schema",
+                "default": "",
+                "examples": [
+                  "UCnOxaDXBiBXg9Nn9hKWu6aw"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "youtube_url": {
+                "$id": "#/properties/data/items/properties/attributes/properties/youtube_url",
+                "type": "string",
+                "title": "The Youtube_url Schema",
+                "default": "",
+                "examples": [
+                  "https://www.youtube.com/user/DefectedMusic"
+                ],
+                "pattern": "(https?:\\/\\/)?(www\\.)?youtu((\\.be)|(be\\..{2,5}))\\/((user)|(channel))\\/"
+              },
+              "avatar": {
+                "$id": "#/properties/data/items/properties/attributes/properties/avatar",
+                "type": "string",
+                "title": "The Avatar Schema",
+                "default": "",
+                "examples": [
+                  "https://yt3.ggpht.com/a-/AN66SAxxhxt3dIc4geZXDePSwhbcCp83BR-Pu92jAg=s88-mo-c-c0xffffffff-rj-k-no"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "created_at": {
+                "$id": "#/properties/data/items/properties/attributes/properties/created_at",
+                "type": "string",
+                "title": "The Created_at Schema",
+                "default": "",
+                "examples": [
+                  "2018-09-20 11:06:02 UTC"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
