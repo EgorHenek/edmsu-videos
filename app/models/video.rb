@@ -37,7 +37,7 @@ class Video < ApplicationRecord
   end
 
   def live_now
-    self.stream_start < DateTime.now && self.stream_end > DateTime.now
+    stream_start.present? && stream_start < DateTime.now && (stream_end.nil? || stream_end > DateTime.now)
   end
 
   algoliasearch per_environment: true do
