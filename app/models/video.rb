@@ -41,7 +41,8 @@ class Video < ApplicationRecord
   end
 
   algoliasearch per_environment: true do
-    attributes :title, :slug, :duration, :avatar
+    attributes :title, :slug, :duration, :avatar, :published_at
     searchableAttributes ['title']
+    customRanking ['desc(published_at)']
   end
 end
