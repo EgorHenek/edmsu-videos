@@ -37,7 +37,7 @@ class Video < ApplicationRecord
   end
 
   def live_now
-    Yt::Models::Video.new(id: self.youtube_id).live_broadcast_content == 'live'
+    self.stream_start < DateTime.now && self.stream_end > DateTime.now
   end
 
   algoliasearch per_environment: true do

@@ -17,8 +17,8 @@ namespace :sync do
     videos = Video.where('is_stream = ? AND stream_start > ? AND stream_end = NULL', true, DateTime.now)
     videos.each do |video|
       yt_video = Yt::Models::Video.new(id: video.youtube_id)
-      video.stream_start = yt_video.actual_start_time || yt_video.scheduled_start_time
-      video.stream_end = yt_video.actual_end_time || yt_video.actual_end_time
+      video.stream_end = yt_video.actual_end_time || yt_video.scheduled_end_time
+      video.duration = yt_video.duration if video.stream_end
       video.save
     end
   end
