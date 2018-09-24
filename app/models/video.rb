@@ -15,7 +15,7 @@ class Video < ApplicationRecord
   validates :duration, numericality: { only_integer: true }
   validates :slug, presence: true, uniqueness: true
   attr_readonly :title, :youtube_url, :youtube_id, :avatar, :duration
-  default_scope { where('duration = 0 OR duration > 1200').order(id: :desc) }
+  default_scope { where('duration = 0 OR duration > 1200').order(published_at: :desc) }
 
   after_initialize do
     if youtube_url.nil?
