@@ -17,7 +17,7 @@ namespace :sync do
     end
   end
   task update_lives: :environment do
-    videos = Video.where('is_stream = ? AND stream_start < ? AND stream_end = NULL', true, DateTime.now)
+    videos = Video.where('is_stream = ? AND DATE(stream_start) < ? AND stream_end = NULL', true, DateTime.now)
     videos.each do |video|
       yt_video = Yt::Models::Video.new(id: video.youtube_id)
       video.stream_end = yt_video.actual_end_time || yt_video.scheduled_end_time
