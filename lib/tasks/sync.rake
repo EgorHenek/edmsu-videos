@@ -5,8 +5,11 @@ namespace :sync do
     channels = Channel.all
     channels.each do |channel|
       yt_channel = Yt::Models::Channel.new(id: channel.youtube_id)
+      next if channel.videos.first.youtube_id == yt_channel.videos.first.id
+
       yt_channel.videos.each do |yt_video|
-        next if Video.find_by_youtube_id(yt_video.id).present?
+        break if Video.find_by_youtube_id(yt_video.id).present?
+
         video = Video.new(youtube_url: "https://www.youtube.com/watch?v=#{yt_video.id}")
         video.channel = channel
         video.save
