@@ -21,7 +21,7 @@ namespace :sync do
     videos.each do |video|
       yt_video = Yt::Models::Video.new(id: video.youtube_id)
       video.stream_end = yt_video.actual_end_time || yt_video.scheduled_end_time
-      video.duration = yt_video.duration if video.stream_end
+      video.duration = yt_video.duration if video.stream_end.present?
       video.save
     end
   end
