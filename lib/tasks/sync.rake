@@ -26,7 +26,7 @@ namespace :sync do
     end
   end
   task clear_delete_videos: :environment do
-    videos = Video.last(100)
+    videos = Video.first(50)
     videos.each do |video|
       yt_video = Yt::Models::Video.new(id: video.youtube_id)
       begin
