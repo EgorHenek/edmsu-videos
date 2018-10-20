@@ -39,23 +39,19 @@ gem 'yt-url'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
+gem 'pg'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
-  gem 'mysql2', '>= 0.4.4', '< 0.6.0'
   gem 'rspec-rails', '~> 3.8'
 end
 
 group :test do
   gem 'database_cleaner'
   gem 'json_matchers'
-end
-
-group :production do
-  gem 'pg'
 end
 
 group :development do

@@ -5,7 +5,7 @@ namespace :sync do
     channels = Channel.all
     channels.each do |channel|
       yt_channel = Yt::Models::Channel.new(id: channel.youtube_id)
-      next if channel.videos.first.youtube_id == yt_channel.videos.first.id
+      next if channel.videos.present? && channel.videos.first.youtube_id == yt_channel.videos.first.id
 
       yt_channel.videos.each do |yt_video|
         break if Video.find_by_youtube_id(yt_video.id).present?
