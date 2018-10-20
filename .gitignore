@@ -21,30 +21,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-Будет удалено .gitignore
-Будет удалено .idea/
-Будет удалено .ruby-gemset
-Будет удалено .ruby-version
-Будет удалено Gemfile
-Будет удалено Gemfile.lock
-Будет удалено README.md
-Будет удалено Rakefile
-Будет удалено app/
-Будет удалено bin/
-Будет удалено config.ru
-Будет удалено config/
-Будет удалено db/
-Будет удалено lib/
-Будет удалено log/
-Будет удалено public/
-Будет удалено storage/
-Будет удалено tmp/
-Будет удалено vendor/
-Будет удалено .idea/dataSources.local.xml
-Будет удалено .idea/dataSources.xml
-Будет удалено .idea/dataSources/
-Будет удалено .idea/inspectionProfiles/
-Будет удалено .idea/workspace.xml
+
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
@@ -106,6 +83,3 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
-
-.idea/.rakeTasks
-
