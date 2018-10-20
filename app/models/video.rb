@@ -15,7 +15,11 @@ class Video < ApplicationRecord
   validates :duration, numericality: { only_integer: true }
   validates :slug, presence: true, uniqueness: true
   attr_readonly :title, :youtube_url, :youtube_id, :avatar, :duration
-  default_scope { where('duration = 0 OR duration > 1200').order(published_at: :desc) }
+  default_scope do
+    where('duration = 0 OR duration > 1200')
+      .select('videos.*, IF(videos.stream_start < NOW() AND videos.stream_end IS NULL OR videos.stream_end > NOW(),TRUE,FALSE) as live_now')
+      .order('live_now DESC', published_at: :desc)
+  end
 
   after_initialize do
     if youtube_url.nil?
@@ -36,9 +40,9 @@ class Video < ApplicationRecord
     end
   end
 
-  def live_now
-    stream_start.present? && stream_start < DateTime.now && (stream_end.nil? || stream_end > DateTime.now)
-  end
+  # def live_now
+  #   stream_start.present? && stream_start < DateTime.now && (stream_end.nil? || stream_end > DateTime.now)
+  # end
 
   algoliasearch per_environment: true do
     attributes :title, :slug, :duration, :avatar, :published_at
