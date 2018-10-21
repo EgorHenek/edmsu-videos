@@ -14,7 +14,7 @@ class Video < ApplicationRecord
   validates :youtube_id, presence: true, uniqueness: true
   validates :duration, numericality: { only_integer: true }
   validates :slug, presence: true, uniqueness: true
-  attr_readonly :title, :youtube_url, :youtube_id, :avatar, :duration
+  attr_readonly :title, :youtube_url, :youtube_id, :avatar
   default_scope do
     select('videos.*, CASE WHEN videos.stream_start < NOW() AND videos.stream_end IS NULL OR videos.stream_end > NOW() THEN TRUE ELSE FALSE END as live_now')
       .where('is_stream=true OR duration > 1200')
