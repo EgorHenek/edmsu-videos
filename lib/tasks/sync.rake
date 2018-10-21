@@ -25,7 +25,10 @@ namespace :sync do
         video.delete
       else
         video.stream_end = yt_video.actual_end_time || yt_video.scheduled_end_time
-        video.duration = yt_video.duration if video.stream_end.present?
+        if video.stream_end.present?
+          video.published_at = yt_video.published_at
+          video.duration = yt_video.duration
+        end
         video.save
       end
     end
