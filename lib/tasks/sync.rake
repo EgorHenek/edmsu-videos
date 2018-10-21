@@ -18,7 +18,7 @@ namespace :sync do
   end
 
   task update_lives: :environment do
-    videos = Video.where('is_stream = ? AND stream_start < ? AND stream_end IS NULL', true, DateTime.now)
+    videos = Video.where('is_stream = ? AND stream_start < ? AND duration = ?', true, DateTime.now, 0)
     videos.each do |video|
       yt_video = Yt::Models::Video.new(id: video.youtube_id)
       if yt_video.live_broadcast_content == 'upcoming' && video.stream_start+90.minutes < Time.now
