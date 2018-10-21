@@ -24,8 +24,9 @@ namespace :sync do
       if yt_video.live_broadcast_content == 'upcoming' && video.stream_start+90.minutes < Time.now
         video.delete
       else
-        video.stream_end = yt_video.actual_end_time || yt_video.scheduled_end_time
+        video.stream_end = yt_video.actual_end_time
         if video.stream_end.present?
+          video.is_stream = false
           video.published_at = yt_video.published_at
           video.duration = yt_video.duration
         end
