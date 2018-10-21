@@ -16,15 +16,21 @@ namespace :sync do
       end
     end
   end
+
   task update_lives: :environment do
     videos = Video.where('is_stream = ? AND stream_start < ? AND stream_end IS NULL', true, DateTime.now)
     videos.each do |video|
       yt_video = Yt::Models::Video.new(id: video.youtube_id)
-      video.stream_end = yt_video.actual_end_time || yt_video.scheduled_end_time
-      video.duration = yt_video.duration if video.stream_end.present?
-      video.save
+      if yt_video.live_broadcast_content == 'upcoming' && video.stream_start+90.minutes < Time.now
+        video.delete
+      else
+        video.stream_end = yt_video.actual_end_time || yt_video.scheduled_end_time
+        video.duration = yt_video.duration if video.stream_end.present?
+        video.save
+      end
     end
   end
+
   task clear_delete_videos: :environment do
     videos = Video.first(50)
     videos.each do |video|
