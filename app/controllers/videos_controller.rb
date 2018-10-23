@@ -4,7 +4,11 @@ class VideosController < ApplicationController
 
   # GET /videos
   def index
-    @videos = paginate Video.all
+    if params[:channel_id].present?
+      @videos = paginate Channel.friendly.find(params[:channel_id]).videos
+    else
+      @videos = paginate Video.all
+    end
 
     render json: VideoSerializer.new(@videos).serialized_json
   end
