@@ -11,7 +11,13 @@ class VideosController < ApplicationController
 
   # GET /videos/1
   def show
-    render json: VideoSerializer.new(@video).serialized_json
+    related_videos = Video.unscope(:select, :order)
+                          .select("videos.*, title <-> '#{@video.title}' AS dist,CASE WHEN videos.stream_start < NOW() \
+AND videos.stream_end IS NULL OR videos.stream_end > NOW() THEN TRUE ELSE FALSE END as live_now")
+                          .order('DIST')
+                          .limit(3)
+                          .offset(1)
+    render json: VideoSerializer.new(@video, params: { related: related_videos }).serialized_json
   end
 
   # POST /videos
