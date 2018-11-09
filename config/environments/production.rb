@@ -58,7 +58,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
   config.action_mailer.smtp_settings = {
-      user_name: 'apikey',
+      user_name: 'DTA323p5TJezxaHIIsR8wQ',
       password: Rails.application.credentials.sendgrid_api_key,
       domain: 'edm.su',
       address: 'smtp.sendgrid.net',
