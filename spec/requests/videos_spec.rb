@@ -22,14 +22,14 @@ RSpec.describe "Videos", type: :request do
     it 'return 200' do
       post videos_path,
            params: { video: { youtube_url: 'https://www.youtube.com/watch?v=P_LLry8BUtQ' } },
-           headers: @admin.create_new_auth_token
+           headers: auth_headers(@admin)
       expect(response).to have_http_status(201)
     end
     describe 'Ошибки доступа' do
       it 'Без прав' do
         post videos_path,
              params: { video: { youtube_url: 'https://www.youtube.com/watch?v=P_LLry8BUtQ' } },
-             headers: @user.create_new_auth_token
+             headers: auth_headers(@user)
         expect(response).not_to have_http_status(201)
       end
       it 'Без авторизации' do
@@ -42,7 +42,7 @@ RSpec.describe "Videos", type: :request do
       expect do
         post videos_path,
              params: { video: { description: 'https://www.youtube.com/watch?v=P_LLry8BUtQ' } },
-             headers: @admin.create_new_auth_token
+             headers: auth_headers(@admin)
       end.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
@@ -51,7 +51,7 @@ RSpec.describe "Videos", type: :request do
       it 'Изменение описания' do
         put video_path(@video.id),
             params: { video: { description: 'Новое описание' } },
-            headers: @admin.create_new_auth_token
+            headers: auth_headers(@admin)
         expect(response).to have_http_status(200)
         expect(JSON.parse(response.body, object_class: OpenStruct).data.attributes.description).to eq 'Новое описание'
       end
@@ -60,7 +60,7 @@ RSpec.describe "Videos", type: :request do
       it 'Без прав' do
         put video_path(@video.id),
             params: { video: { description: 'Новое описание' } },
-            headers: @user.create_new_auth_token
+            headers: auth_headers(@user)
         expect(response).not_to have_http_status(204)
       end
       it 'Без авторизации' do
@@ -71,12 +71,12 @@ RSpec.describe "Videos", type: :request do
   end
   describe 'DELETE /videos/:id' do
     it 'return 200' do
-      delete video_path(@video.id), headers: @admin.create_new_auth_token
+      delete video_path(@video.id), headers: auth_headers(@admin)
       expect(response).to have_http_status(204)
     end
     describe 'Ошибки доступа' do
       it 'Без прав' do
-        delete video_path(@video.id), headers: @user.create_new_auth_token
+        delete video_path(@video.id), headers: auth_headers(@user)
         expect(response).not_to have_http_status(204)
       end
       it 'Без авторизации' do

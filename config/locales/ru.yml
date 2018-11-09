@@ -1,6 +1,12 @@
 ---
 ru:
   activerecord:
+    attributes:
+      video:
+        youtube_url: 'Ссылка на видео youtube'
+      channel:
+        youtube_url: 'Ссылка на канал'
+        title: 'Название канала'
     errors:
       messages:
         record_invalid: 'Возникли ошибки: %{errors}'

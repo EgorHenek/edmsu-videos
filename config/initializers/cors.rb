@@ -12,7 +12,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     origins '*'
     resource '*',
              headers: :any,
-             expose: ['access-token', 'expiry', 'token-type', 'uid', 'client', 'Total','Per-Page'],
+             expose: %w(Authorization Total Per-Page),
              methods: %i[get post delete put]
   end
 end

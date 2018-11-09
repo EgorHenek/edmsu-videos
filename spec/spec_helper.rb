@@ -16,8 +16,14 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'json_matchers/rspec'
+require 'devise/jwt/test_helpers'
 
 JsonMatchers.schema_root = 'spec/schemas'
+
+def auth_headers(user)
+  headers = { 'Accept' => 'application/json' }
+  Devise::JWT::TestHelpers.auth_headers(headers, user)
+end
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

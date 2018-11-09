@@ -4,14 +4,14 @@ FactoryBot.define do
   factory :user do
     email { Faker::Internet.safe_email }
     password { Faker::Internet.password }
-    provider { 'email' }
-    nickname { Faker::Internet.username }
+    name { Faker::Twitter.screen_name }
 
     trait :confirmed do
       after(:create, &:confirm)
     end
 
     factory :user_with_admin do
+      after(:create, &:confirm)
       after(:create) { |user| user.add_role('admin') }
     end
   end

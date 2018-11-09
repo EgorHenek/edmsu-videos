@@ -1,0 +1,4 @@
+<p><%= t('.greeting', recipient: @email) %></p>
+
+<p><%= t('.instruction') %></p>
+<p><%= link_to t('.action'), 'https://edm.su/user/register/success?confirmation_token='+@token %></p>

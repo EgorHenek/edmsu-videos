@@ -26,12 +26,12 @@ RSpec.describe 'Channels', type: :request do
 
   describe 'DELETE /channels/:id' do
     it 'return 200' do
-      delete channel_path(@channel.id), headers: @admin.create_new_auth_token
+      delete channel_path(@channel.id), headers: auth_headers(@admin)
       expect(response).to have_http_status(204)
     end
     describe 'Ошибки доступа' do
       it 'Без прав' do
-        delete channel_path(@channel.id), headers: @user.create_new_auth_token
+        delete channel_path(@channel.id), headers: auth_headers(@user)
         expect(response).not_to have_http_status(204)
       end
       it 'Без авторизации' do
@@ -44,27 +44,20 @@ RSpec.describe 'Channels', type: :request do
   describe 'PUT /channels/:id' do
     describe 'return 200' do
       it 'Изменение описания' do
+        description = 'Новое описание'
         put channel_path(@channel.id),
-            params: { channel: { description: 'Новое описание' } },
-            headers: @admin.create_new_auth_token
+            params: { channel: { description: description } },
+            headers: auth_headers(@admin)
         expect(response).to have_http_status(200)
         expect(response).to match_json_schema('channels/get_channel')
-        expect(JSON.parse(response.body, object_class: OpenStruct).data.attributes.description).to eq 'Новое описание'
-      end
-      it 'Изменение youtube_url' do
-        put channel_path(@channel.id),
-            params: { channel: { youtube_url: 'https://www.youtube.com/user/OmelchukTV' } },
-            headers: @admin.create_new_auth_token
-        expect(response).to have_http_status(200)
-        expect(response).to match_json_schema('channels/get_channel')
-        expect(JSON.parse(response.body, object_class: OpenStruct).data.attributes.youtube_url).to eq 'https://www.youtube.com/user/OmelchukTV'
+        expect(JSON.parse(response.body, object_class: OpenStruct).data.attributes.description).to eq description
       end
     end
     describe 'Ошибки доступа' do
       it 'Без прав' do
         put channel_path(@channel.id),
             params: { channel: { description: 'Новое описание' } },
-            headers: @user.create_new_auth_token
+            headers: auth_headers(@user)
         expect(response).not_to have_http_status(204)
       end
       it 'Без авторизации' do
@@ -78,7 +71,7 @@ RSpec.describe 'Channels', type: :request do
     it 'return 200' do
       post channels_path,
            params: { channel: { youtube_url: 'https://www.youtube.com/channel/UCOloc4MDn4dQtP_U6asWk2w' } },
-           headers: @admin.create_new_auth_token
+           headers: auth_headers(@admin)
       expect(response).to have_http_status(201)
       expect(response).to match_json_schema('channels/get_channel')
     end
@@ -86,7 +79,7 @@ RSpec.describe 'Channels', type: :request do
       it 'Без прав' do
         post channels_path,
              params: { channel: { youtube_url: 'https://www.youtube.com/channel/UCOloc4MDn4dQtP_U6asWk2w' } },
-             headers: @user.create_new_auth_token
+             headers: auth_headers(@user)
         expect(response).not_to have_http_status(201)
       end
       it 'Без авторизации' do
@@ -98,7 +91,7 @@ RSpec.describe 'Channels', type: :request do
       expect do
         post channels_path,
              params: { channel: { description: 'https://www.youtube.com/channel/UCOloc4MDn4dQtP_U6asWk2w' } },
-             headers: @admin.create_new_auth_token
+             headers: auth_headers(@admin)
       end.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
