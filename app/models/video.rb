@@ -23,7 +23,7 @@ class Video < ApplicationRecord
 
   after_initialize do
     if youtube_url.nil?
-      errors.add(:youtube_url, :presence)
+      errors.add(:youtube_url, :blank)
       raise ActiveRecord::RecordInvalid, self
     end
     if new_record?
@@ -31,7 +31,7 @@ class Video < ApplicationRecord
       self.youtube_id = video.id
       self.title = video.title
       self.published_at = video.published_at if video.published_at.present?
-      self.description = video.description if description.nil?
+      self.description = video.description if description.blank?
       self.avatar = video.thumbnail_url
       self.duration = video.duration
       self.is_stream = %w[live upcoming].include?(video.live_broadcast_content)

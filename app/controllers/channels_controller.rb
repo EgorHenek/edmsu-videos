@@ -14,7 +14,7 @@ class ChannelsController < ApplicationController
   # GET /channels/1
   def show
     @videos = paginate @channel.videos
-    render json: [ChannelSerializer.new(@channel).serializable_hash, VideoSerializer.new(@videos).serializable_hash]
+    render json: ChannelSerializer.new(@channel).serializable_hash
   end
 
   # POST /channels
@@ -25,16 +25,16 @@ class ChannelsController < ApplicationController
     if @channel.save
       render json: ChannelSerializer.new(@channel).serialized_json, status: :created, location: @channel
     else
-      render json: @channel.errors, status: :unprocessable_entity
+      render json: {success: false, errors: @channel.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /channels/1
   def update
-    if @channel.update(channel_params)
+    if @channel.update(update_channel_params)
       render json: ChannelSerializer.new(@channel).serialized_json
     else
-      render json: @channel.errors, status: :unprocessable_entity
+      render json: {success: false, errors: @channel.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
@@ -53,5 +53,9 @@ class ChannelsController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def channel_params
     params.require(:channel).permit(:youtube_url, :description)
+  end
+
+  def update_channel_params
+    params.require(:channel).permit(:description)
   end
 end

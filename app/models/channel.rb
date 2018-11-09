@@ -12,7 +12,7 @@ class Channel < ApplicationRecord
             uniqueness: true,
             format: { with: /(https?:\/\/)?(www\.)?youtu((\.be)|(be\..{2,5}))\/((user)|(channel))\// }
   validates :slug, presence: true
-  attr_readonly :title, :youtube_id, :avatar
+  attr_readonly :title, :youtube_id, :avatar, :youtube_url
 
   after_initialize do
     if youtube_url.nil?
