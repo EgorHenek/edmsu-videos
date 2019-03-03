@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/EgorHenek/youtube-dl.rb
+  revision: cf0c5e3f4657aac4a54a49749e90b186241ae49a
+  specs:
+    youtube-dl.rb (0.3.1.2019.03.01.1)
+      cocaine (>= 0.5.4)
+
+GIT
   remote: https://github.com/stympy/faker.git
   revision: e220758871e64b85e799efc6143617b1cb722761
   branch: master
@@ -60,12 +67,30 @@ GEM
       json (>= 1.5.1)
     api-pagination (4.8.1)
     arel (9.0.0)
+    aws-eventstream (1.0.1)
+    aws-partitions (1.141.0)
+    aws-sdk-core (3.46.2)
+      aws-eventstream (~> 1.0)
+      aws-partitions (~> 1.0)
+      aws-sigv4 (~> 1.0)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.13.0)
+      aws-sdk-core (~> 3, >= 3.39.0)
+      aws-sigv4 (~> 1.0)
+    aws-sdk-s3 (1.30.1)
+      aws-sdk-core (~> 3, >= 3.39.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.0)
+    aws-sigv4 (1.0.3)
     bcrypt (3.1.12)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (10.0.2)
     cancancan (2.3.0)
+    climate_control (0.2.0)
+    cocaine (0.6.0)
+      terrapin (= 0.6.0)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     database_cleaner (1.7.0)
@@ -104,6 +129,7 @@ GEM
     httpclient (2.8.3)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
+    jmespath (1.4.0)
     json (2.1.0)
     json_matchers (0.10.0)
       json_schema
@@ -199,6 +225,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    terrapin (0.6.0)
+      climate_control (>= 0.0.3, < 1.0)
     thor (0.20.0)
     thread_safe (0.3.6)
     tzinfo (1.2.5)
@@ -233,6 +261,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 6.0)
   algoliasearch-rails
   api-pagination
+  aws-sdk-s3
   bootsnap (>= 1.1.0)
   byebug
   cancancan
@@ -256,6 +285,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
+  youtube-dl.rb!
   yt
   yt-url
 

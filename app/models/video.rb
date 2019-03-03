@@ -7,6 +7,7 @@ class Video < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :channel, optional: true
   validates :title, presence: true
+  has_one_attached :download
   validates :youtube_url,
             presence: true,
             uniqueness: true,

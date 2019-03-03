@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_26_204943) do
+ActiveRecord::Schema.define(version: 2019_03_03_064102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2018_10_26_204943) do
     t.datetime "updated_at", null: false
     t.string "youtube_url", null: false
     t.string "slug", null: false
+    t.boolean "default_allowed_download", default: true
     t.index ["user_id"], name: "index_channels_on_user_id"
   end
 
@@ -150,9 +151,20 @@ ActiveRecord::Schema.define(version: 2018_10_26_204943) do
     t.bigint "channel_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "allowed_download", default: true
     t.index ["channel_id"], name: "index_videos_on_channel_id"
     t.index ["title"], name: "index_videos_on_title", opclass: :gin_trgm_ops, using: :gin
     t.index ["user_id"], name: "index_videos_on_user_id"
+  end
+
+  create_table "videos_downloads", force: :cascade do |t|
+    t.datetime "delete_time", null: false
+    t.integer "attempts", default: 0
+    t.bigint "videos_id", null: false
+    t.boolean "deleted", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["videos_id"], name: "index_videos_downloads_on_videos_id"
   end
 
 end
